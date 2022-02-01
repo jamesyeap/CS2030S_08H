@@ -2,7 +2,7 @@
 % CS2030S
 % 3 Feb 2022 
 
-## Break up ShopEvent into various Event types
+## Break up `ShopEvent` into various Event types
 ShopEvent is really bloated.
 ```java
 /* ShopEvent.java */
@@ -15,7 +15,7 @@ class ShopEvent extends Event {
 
 ---
 
-Can we break up ShopEvent into various classes that **only** contain the necessary fields and methods? 🧐
+Can we break up `ShopEvent` into various classes that **only** contain the necessary fields and methods? 🧐
 
 ```java
 /* ArrivalEvent.java */
@@ -48,7 +48,7 @@ class DepartureEvent extends Event {
 }
 ```
 
-## Create a Customer class
+## Create a `Customer` class
 
 Currently, we only have `customerId` to identify the customer.
 
@@ -89,14 +89,12 @@ class Customer {
 
 ---
 
-Then in the various Event classes, we can add continuously check if the customer needs to leave! 😃
+Then in the various Event classes, we can continuously check if the customer needs to leave! 😃
 
 ```java
 /* ServiceBeginEvent.java */
 
-class ServiceBeginEvent { // then we can check if the Customer is still fit to shop :D
-    // ... other fields and methods
-
+class ServiceBeginEvent {
     @Override
     public Event[] simulate() {
         if (this.customer.hasCovid()) {
@@ -111,7 +109,7 @@ class ServiceBeginEvent { // then we can check if the Customer is still fit to s
 }
 ```
 
-## Create a Counter class
+## Create a `Counter` class
 What if we wanted to let a counter serve TWO customers? 👨‍🦱👩‍🦰
 
 ---
@@ -144,17 +142,28 @@ class Counter {
     int id;
     int capacity;
     int nCustomers;
-    Customer[] customersAtCounter;
+    List<Integer> customersAtCounter;
 
     public Counter(int capacity) {
         this.capacity = capacity;
         this.nCustomers = 0;
-        this.customersAtCounter = new Customer[capacity];
+        this.customersAtCounter = new ArrayList<>();
     }
 
-    // returns true if the Counter can still serve another customer!
-    public boolean hasSlot() {
+    // returns true if the Counter can still
+    // serve another customer!
+    public boolean isAvailable() {
         return this.capacity > nCustomers;
+    }
+
+    public void serveCustomer(Customer incomingCustomer) {
+        customersAtCounter.add(incomingCustomer);
+        nCustomers++;
+    }
+
+    public void leaveCustomer(Customer leavingCustomer) {
+        customersAtCounter.remove(leavingCustomer);
+        nCustomers--;
     }
 }
 ```
@@ -190,18 +199,6 @@ class Shop {
     return null;
   }
 }
-```
-
-## Be careful of typos 
-```java
-/* Servicebegin.java */
-
-public Servicebegin (Customer c,boolean[] avialable, int counterid) { // note the typo here: "avialable"
-    super(c.getArrivaltime());
-    this.c=c;
-    this.available=available;
-    this.counterid=counterid;
-  }
 ```
 
 ## Follow the Java Style Guide
@@ -251,7 +248,8 @@ cd <lab_name>-<your_github_username>
 # example: cd lab1-jamesyeap
 
 # run the script and follow the prompts!
-bash get-results.sh
+bash get-results.sh <lab_name>
+# example: bash get-results.sh Lab1
 ```
 
 ---
@@ -259,6 +257,8 @@ bash get-results.sh
 HOWEVER, you probably won't be able to use this script in your PE, so just make sure you know the official debugging technique well! 😃
 
 ```bash
+# REPEATED FROM ABOVE
+
 # inputs the first testcase to your program, and saves
 # the output in "Lab1.1.results"
 java Lab1 < inputs/Lab1.1.in > Lab1.1.results

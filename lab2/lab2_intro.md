@@ -210,6 +210,10 @@ You have 5 minutes ⏰
 
 ---
 
-RNG time 🎲
+Share your solution! Any volunteers?
+
+---
+
+jk RNG time 🎲
 
 ---
