@@ -1,8 +1,8 @@
-% Lab 2
+% OOP Concepts
 % CS2030S
 % 3 Feb 2022
 
-# Recap of OOP Concepts
+# Quick Recap
 
 ## Abstract class
 
