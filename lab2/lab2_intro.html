@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Simulating a Shop with a Queue">
+  <title>Lab 2</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Lab 2</h1>
+  <p class="author">Simulating a Shop with a Queue</p>
+  <p class="date">CS2030S</p>
+</section>
+
+<section id="previously-in-lab-1" class="slide level1">
+<h1>Previously in Lab 1</h1>
+</section>
+<section class="slide level1">
+
+<h2 id="no-waiting-due-to-covid-19-restrictions">no waiting due to COVID-19 restrictions</h2>
+<ul>
+<li>the shop is losing customers as a customer departs if all the counters are busy 💸</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="adding-an-entrance-queue-to-our-shop">adding an entrance queue to our shop,</h2>
+<ul>
+<li>Lab 2 adds an <strong><em>entrance queue</em></strong> to the shop</li>
+<li>now, instead of leaving when all counters are busy, a customer will join the queue and wait ⏱</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="queue-behavior">queue behavior</h2>
+<ul>
+<li>when a counter becomes available, the customer at the <strong><em>front</em></strong> of the queue will proceed to the counter for service</li>
+<li>a queue has a maximum length
+<ul>
+<li>which is specified in the input testcase</li>
+<li>when the queue is full, any arriving customer will be turned away ✋</li>
+</ul></li>
+</ul>
+</section>
+<section id="building-on-lab-1" class="slide level1">
+<h1>Building on Lab 1</h1>
+</section>
+<section class="slide level1">
+
+<ul>
+<li>in Lab 2, only two classes are given,
+<ul>
+<li><code>Lab2.java</code></li>
+<li><code>Queue.java</code></li>
+</ul></li>
+<li>so, copy over all your classes from Lab 1, <strong><em>except</em></strong>
+<ul>
+<li><code>Lab1.java</code>
+<ul>
+<li>(because we’ll be using <code>Lab2.java</code> for Lab 2)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="your-tasks" class="slide level1">
+<h1>Your Tasks</h1>
+<ul>
+<li>improve on your design for Lab 1 (if needed)</li>
+<li>update the relevant classes (or add new ones) to simulate the entrance queue</li>
+<li>update the input and output components of the classes to conform to the new specifications
+<ul>
+<li>the <code>toString</code> methods (refer to Question.md in Lab 2)</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
