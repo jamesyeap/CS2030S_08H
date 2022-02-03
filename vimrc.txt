@@ -1,0 +1,88 @@
+" ----- Main Settings -----
+set number " Add numbers to each line on the left-hand side.
+set cursorline " Highlight cursor line underneath the cursor horizontally.
+set cursorcolumn " Highlight cursor line underneath the cursor vertically.
+set ruler
+set hlsearch
+set expandtab " Use space characters instead of tabs
+set tabstop=2 " Adds 2 spaces when you press tab
+set shiftwidth=2 " Adds 2 spaces on the next-line after {
+set nowrap " Do not wrap lines. Allow long lines to extend as far as the line goes.
+set autoindent
+set smartindent
+set cindent
+set showtabline=2
+
+" ----- Search Settings -----
+set hlsearch " Use highlighting when doing a search
+set showmatch " Show matching words during a search
+set incsearch " While searching though a file incrementally highlight matching characters as you type.
+set ignorecase " Ignore capital letters during search.
+set smartcase " Override the ignorecase option if searching for capital letters.
+              "   This will allow you to search specifically for capital letters.
+
+" ----- Command Settings -----
+set wildmenu " Enable auto completion menu after pressing TAB.
+set wildmode=list:longest " Make wildmenu behave like similar to Bash completion.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx " Wildmenu will ignore files with these extensions.
+
+" ----- Buffer Window Settings -----
+set splitbelow 
+set splitright
+
+" ----- Vim Plugins -----
+filetype plugin indent on
+
+let g:rainbow_active=1
+set laststatus=2
+let g:lightline={'colorscheme':'wombat'}
+
+" ----- Key Bindings -----
+"  nnoremap - Allows you to map keys in normal mode
+"  inoremap - Allows you to map keys in insert mode
+"  vnoremap - Allows you to map keys in visual mode
+
+inoremap { {<CR>}<up><end><CR>
+imap <C-Return> <CR><CR><C-o>k<Tab>
+
+" ----- Color and Syntax Highlights -----
+set background=dark
+syntax enable
+colorscheme gruvbox
+
+" ********************************************************************************************
+
+" PLUGINS ---------------------------------------------------------------- {{{
+  call plug#begin('~/.vim/plugged')
+
+  call plug#end()
+
+" }}}
+
+
+" MAPPINGS --------------------------------------------------------------- {{{
+
+" Mappings code goes here.
+
+" }}}
+
+
+" VIMSCRIPT -------------------------------------------------------------- {{{
+
+" This will enable code folding.
+" Use the marker method of folding.
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" More Vimscripts code goes here.
+
+" }}}
+
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Status bar code goes here.
+
+" }}}
