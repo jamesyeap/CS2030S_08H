@@ -41,7 +41,7 @@ for ((i = 1; i<= $num_testcases; i++)); do
   java $lab_name < inputs/$lab_name.$i.in > results/$lab_name.$i.results
  
   if ! cmp -s "results/$lab_name.$i.results" "outputs/$lab_name.$i.out"; then
-    printf "⚠️ test $i failed!\nrun the following command\n  ⌨️  vim -d results/$lab_name.$i.results outputs/$lab_name.$i.out ⌨️\nto see the difference between the expected output and your
+    printf "⚠️ test $i failed!\nrun the following command\n  ⌨️  vim -d results/$lab_name.$i.results outputs/$lab_name.$i.out ⌨️\nto see the difference between the expected output and your program's output!"
     (( num_testcases_failed = num_testcases_failed + 1 ))
   else
     printf "✅ test $i passed!\n"
@@ -50,7 +50,7 @@ for ((i = 1; i<= $num_testcases; i++)); do
 done
  
 if (( num_testcases_failed > 0 )); then
-  printf "\n🔧🔧🔧 your program did not pass some test-cases! run the aforementioned commands to see where it went wrong! keep going! :) 🔧🔧🔧\n"
+  printf "\n🔧🔧🔧 your program did not pass some test-cases! run the aforementioned commands to see where it went wrong! keep going! 🔧🔧🔧\n"
 else
   printf "\n🎉🎉🎉 awesome! your program passed all the given test-cases! 🎉🎉🎉\n"
 fi
