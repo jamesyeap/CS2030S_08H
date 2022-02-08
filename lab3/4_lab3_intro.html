@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS2030S">
+  <meta name="dcterms.date" content="2022-02-10">
+  <title>Lab 3</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Lab 3</h1>
+  <p class="author">CS2030S</p>
+  <p class="date">10 Feb 2022</p>
+</section>
+
+<section>
+<section id="more-queues" class="title-slide slide level1">
+<h1>More Queues ⏱</h1>
+
+</section>
+<section id="tldr" class="slide level2">
+<h2>tldr</h2>
+<ul>
+<li>each <code>counter</code> now has a queue, which has a maximum capacity of <code>L</code></li>
+<li>the <code>shop</code> still has a queue, which has a maximum capacity of <code>M</code></li>
+</ul>
+</section>
+<section id="which-queue-to-join" class="slide level2">
+<h2>which queue to join?</h2>
+<ul>
+<li>If some <code>counter</code> is available when a customer arrives, the customer will go straight to that <code>counter</code></li>
+<li>If all the <code>counter</code> are busy, the customer will join <code>counter</code> queue that is the <strong><em>shortest</em></strong> and wait</li>
+<li>If all the <code>counter</code> queues are full, the customer will join the <code>shop</code> queue and wait</li>
+<li>If even the <code>shop</code> queue is full, the customer will leave immediately</li>
+</ul>
+</section>
+<section id="advancing-the-queue" class="slide level2">
+<h2>advancing the queue</h2>
+<ul>
+<li>when a <code>counter</code> is done serving a customer, one customer from the <code>shop</code> queue may join the queue of that <code>counter</code></li>
+<li><em>the rest are straightforward</em></li>
+</ul>
+</section>
+<section id="edge-cases" class="slide level2">
+<h2>edge cases</h2>
+<ul>
+<li>if more than one <code>counter</code> are available, a customer will go to the <code>counter</code> with the <strong><em>smallest id</em></strong> (just like Lab 2)</li>
+<li>if there are two <code>counters</code> with the same queue length, a customer will join the <code>counter</code>’s queue with the <strong><em>smallest id</em></strong></li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="your-tasks" class="title-slide slide level1">
+<h1>Your Tasks ✏️</h1>
+
+</section>
+<section id="what-you-need-to-do" class="slide level2">
+<h2>What you need to do</h2>
+<ol type="1">
+<li>make <code>Queue</code> a generic class</li>
+<li>create a generic <code>Array&lt;T&gt;</code> class</li>
+<li>make your <code>Counter</code> <code>Comparable</code> to itself</li>
+<li>update your simulation by incorporating <code>Queue&lt;T&gt;</code>, <code>Array&lt;T&gt;</code> and <code>Counter</code></li>
+<li>update your <code>toString()</code> methods</li>
+</ol>
+</section>
+<section id="task-1-make-queue-a-generic-class" class="slide level2">
+<h2>Task 1: Make <code>Queue</code> a generic class</h2>
+<p>remember the <code>Queue</code> class given to you in Lab 2?<br />
+make it a generic class <code>Queue&lt;T&gt;</code></p>
+</section>
+<section id="testing-your-queuet" class="slide level2">
+<h2>Testing your <code>Queue&lt;T&gt;</code></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">javac</span> <span class="at">-Xlint:rawtypes</span> QueueTest.java</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> QueueTest</span></code></pre></div>
+</section>
+<section id="task-2-complete-the-generic-arrayt-class" class="slide level2">
+<h2>Task 2: Complete the generic <code>Array&lt;T&gt;</code> class</h2>
+<blockquote>
+<p>“… we want to replace <code>ServiceCounter[]</code> with <code>Array&lt;ServiceCounter&gt;</code>”</p>
+</blockquote>
+</section>
+<section id="what-can-arrayt-take-in" class="slide level2">
+<h2>what can <code>Array&lt;T&gt;</code> take in?</h2>
+<p>make it so that <code>Array&lt;T&gt;</code> takes in only a <strong><em>subtype</em></strong> of <code>Comparable&lt;T&gt;</code> as its type argument</p>
+<p>you will have to use raw type while implementing this class,<br />
+- use <code>@SuppressWarnings("rawtypes")</code> at the <strong><em>smallest scope possible</em></strong> - to suppress the warning about raw types.</p>
+</section>
+<section id="additional-notes-for-your-arrayt-class" class="slide level2">
+<h2>additional notes for your <code>Array&lt;T&gt;</code> class</h2>
+<p><code>min</code> returns the minimum element</p>
+<p>how?</p>
+<p>based on the <code>compareTo</code> method of the <code>Comparable&lt;T&gt;</code> interface</p>
+</section>
+<section id="testing-your-arrayt" class="slide level2">
+<h2>Testing your <code>Array&lt;T&gt;</code></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>javac <span class="op">-</span>Xlint<span class="op">:</span>rawtypes ArrayTest<span class="op">.</span><span class="fu">java</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>java ArrayTest</span></code></pre></div>
+</section>
+<section id="cs2030s-notes-on-arrayt" class="slide level2">
+<h2>CS2030S notes on <code>Array&lt;T&gt;</code></h2>
+<p>you may refer to the <code>Array&lt;T&gt;</code> class from the notes<br />
+<a href="https://nus-cs2030s.github.io/2122-s2/25-unchecked.html">CS2030S Notes</a></p>
+</section>
+<section id="task-3-make-your-counter-comparable-to-itself" class="slide level2">
+<h2>Task 3: make your <code>Counter</code> <code>Comparable</code> to itself</h2>
+<blockquote>
+<p>“You should implement compareTo in such a way that counters.min() returns the counter that a customer <strong><em>should join</em></strong> (unless all the counter queues have reached maximum length)”</p>
+</blockquote>
+<p>hint: if two <code>Counter</code> have the same queue length, the <code>Counter</code> with the <strong><em>smaller id</em></strong> would be the one that the Customer should join 😃</p>
+</section>
+<section id="task-4-update-your-simulation" class="slide level2">
+<h2>Task 4: Update your simulation</h2>
+<p>Update your code to use the new classes <code>Array&lt;T&gt;</code> and <code>Queue&lt;T&gt;</code> where appropriate.</p>
+</section>
+<section id="task-5-update-your-tostring-methods" class="slide level2">
+<h2>Task 5: Update your <code>toString()</code> methods</h2>
+<p>if the customer joins a shop queue</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">1.400:</span> C3 joined shop queue [ C1 C2 ]</span></code></pre></div>
+<p>if the customer joins a counter queue</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">1.200:</span> C2 joined counter queue <span class="er">(</span><span class="ex">at</span> S0 [ C1 ]<span class="kw">)</span></span></code></pre></div>
+<p>whenever a counter is printed, print its queue too</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2.000:</span> C0 service done <span class="er">(</span><span class="ex">by</span> S0 [ C1 C2 ]<span class="kw">)</span></span></code></pre></div>
+</section></section>
+<section id="good-luck" class="title-slide slide level1">
+<h1>Good luck! 😃</h1>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
