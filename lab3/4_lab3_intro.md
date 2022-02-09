@@ -61,6 +61,12 @@ you will have to use raw type while implementing this class,
 - use `@SuppressWarnings("rawtypes")` at the ***smallest scope possible***
 - to suppress the warning about raw types.
 
+---
+
+# SuppressWarning Demo
+
+---
+
 ## additional notes for your `Array<T>` class
 `min` returns the minimum element  
 

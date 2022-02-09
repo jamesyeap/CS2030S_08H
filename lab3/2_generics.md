@@ -45,7 +45,7 @@ class A<T> {
 
 class Main {
   public static void main(String[] args) {
-    A a = new A();                   // ❌ raw type!
+    A a = new A();                   // ❌ raw type; missing <...>
     A<Integer> a = new A<Integer>(); // ✅ OK!
   }
 }
@@ -95,24 +95,6 @@ class B<T> extends A<T> {
 
 class C<T> { 
   private A<T> a;
-
-}
-```
-
----
-
-## is there anything wrong with this? 🧐
-```java
-class F extends A<T> { 
-
-}
-```
-
----
-
-## then what about this? 🧐
-```java
-class F extends A<String> {
 
 }
 ```
@@ -182,6 +164,8 @@ class D<T> {
 
   // constructor
   D() {
+    // silences compiler by telling it that you've
+    //   checked this line and that this is OK 
     @SuppressWarnings("unchecked")
     T[] tmp = (T[]) new Object[10];
 
