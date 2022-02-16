@@ -230,3 +230,9 @@ class Box<T> {
 ```
 - input: Anything super-class of type `T`
 - output: Something that is a sub-class of type `U`
+
+---
+
+### Finally
+
+Test [Panopto](https://nus-cs2030s.github.io/2122-s2/panopto/panopto.html) and make sure its working
