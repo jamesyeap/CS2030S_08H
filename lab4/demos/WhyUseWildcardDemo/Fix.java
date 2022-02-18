@@ -13,7 +13,7 @@ public class Fix {
 		// we can try to add a string to this list, but it won't compile
 		// a.add("a"); // since "a" is not an integer! 
 
-		/* ----- where things go horribly wrong ----- */
+		/* ----- THE FIX ----- */
 
 		// we create a wildcard variable b, and assign a to it
 		List<?> b = a; // <--- the fix 🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠
