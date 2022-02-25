@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS2030S">
+  <meta name="dcterms.date" content="2022-03-10">
+  <title>Lab 6 ❓</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Lab 6 ❓</h1>
+  <p class="author">CS2030S</p>
+  <p class="date">10 March 2022</p>
+</section>
+
+<section id="javadocs" class="slide level2">
+<h2>JavaDocs</h2>
+<ul>
+<li>For <code>Lazy.java</code>, write JavaDocs for all the methods
+<ul>
+<li><a href="https://nus-cs2030s.github.io/2021-s2/javadoc.html">guide to JavaDocs</a></li>
+</ul></li>
+<li>For everything else, JavaDocs is optional but encouraged.</li>
+</ul>
+</section>
+<section id="wad-is-lazy" class="slide level2">
+<h2>wad is lazy?</h2>
+<blockquote>
+<p>Your task is to write an <strong><em>immutable</em></strong> Lazy class to support the operations involving lazy values.</p>
+</blockquote>
+<blockquote>
+<p>A lazy value is <strong><em>not evaluated during creation</em></strong>, but only until the value is needed. Moreover, the <strong><em>first time this value is computed, a cached copy is stored.</em></strong></p>
+</blockquote>
+</section>
+<section id="wad-is-lazy-continued." class="slide level2">
+<h2>wad is lazy? (continued.)</h2>
+<blockquote>
+<p>This allows subsequent accesses to this same value to be retrieved directly, rather than computing it all over again.</p>
+</blockquote>
+</section>
+<section id="example" class="slide level2">
+<h2>example</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// behaviour for function</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Producer<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> s <span class="op">=</span> <span class="op">()</span> <span class="op">-&gt;</span> <span class="st">&quot;hello&quot;</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Lazy<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> hello <span class="op">=</span> Lazy<span class="op">.</span><span class="fu">of</span><span class="op">(</span>s<span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>hello<span class="op">);</span>      <span class="co">// prints &quot;?&quot; </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// (because you have not evaluated it yet)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>hello<span class="op">.</span><span class="fu">get</span><span class="op">();</span>                    </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span>           <span class="co">// prints &quot;hello&quot; </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// (because you&#39;ve already evaluated it)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// behaviour for value</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Lazy<span class="op">&lt;</span><span class="bu">Integer</span><span class="op">&gt;</span> eight <span class="op">=</span> Lazy<span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>eight<span class="op">);</span>      <span class="co">// prints &quot;8&quot; </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// (because, even though you haven&#39;t called get(),</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// there is no need to compute/calculate anything,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// since 8 is already a value!</span></span></code></pre></div>
+</section>
+<section id="your-todos-for-lab-6" class="slide level2">
+<h2>Your Todos for Lab 6 ✍️</h2>
+<ul>
+<li>create a generic class <code>Lazy&lt;T&gt;</code>
+<ul>
+<li>has 2 <code>static</code> <em>factory</em> methods:
+<ul>
+<li><code>of(T v)</code></li>
+<li><code>of(Producer&lt;T&gt; s)</code></li>
+</ul></li>
+<li>has x <em>instance</em> methods
+<ul>
+<li><code>get()</code></li>
+<li><code>map(...)</code></li>
+<li><code>flatMap(...)</code></li>
+<li><code>filter(...)</code></li>
+<li><code>combine(...)</code> 🖇</li>
+</ul></li>
+<li>overrides
+<ul>
+<li><code>toString()</code></li>
+<li><code>equals(...)</code></li>
+</ul></li>
+</ul></li>
+<li>create a generic class <code>LazyList&lt;T&gt;</code></li>
+</ul>
+</section>
+<section>
+<section id="lazyt" class="title-slide slide level1">
+<h1><code>Lazy&lt;T&gt;</code></h1>
+
+</section>
+<section id="lazyt-factory-methods" class="slide level2">
+<h2><code>Lazy&lt;T&gt;</code> factory methods</h2>
+<ul>
+<li><code>of(Producer&lt;T&gt; s)</code>
+<ul>
+<li>imagine we have a <em>really intensive</em> piece of code that takes really long to run</li>
+<li>we want to save the result somewhere, (so that we won’t have to run it twice)</li>
+<li>here, <code>Producer&lt;T&gt;#produce()</code> represents this form of computation
+<ul>
+<li>we want to only call <code>produce()</code>
+<ul>
+<li><em>only once</em></li>
+<li><em>only when needed</em></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><code>of(T v)</code>)
+<ul>
+<li>takes in a value that is already computed!
+<ul>
+<li>no calculations needed</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="get" class="slide level2">
+<h2><code>get()</code></h2>
+<ul>
+<li>if the value inside <code>Lazy&lt;T&gt;</code> has already been computed
+<ul>
+<li>simply return the value</li>
+</ul></li>
+<li>if not,
+<ul>
+<li>get the <code>Producer&lt;T&gt;</code> to <code>produce()</code> the value</li>
+<li>save it</li>
+<li>then return the value</li>
+</ul></li>
+<li>note that we want <code>get()</code> to be <strong>lazy</strong>, which means
+<ul>
+<li>we only perform the calculation <em>when needed</em>
+<ul>
+<li>only when someone calls <code>get()</code></li>
+</ul></li>
+<li>meaning we <em>do not</em> perform the calculation when the <code>Lazy&lt;T&gt;</code> instance is instantiated</li>
+</ul></li>
+</ul>
+</section>
+<section id="map-and-flatmap" class="slide level2">
+<h2><code>map</code> and <code>flatMap</code></h2>
+<ul>
+<li>returns a <code>Lazy&lt;T&gt;</code> instance</li>
+<li>recall that they take in a <code>Transformer</code> that basically does some conversion</li>
+<li>note that this conversion should also be <em>lazy</em>
+<ul>
+<li>meaning it should not be done until <code>get()</code> is called on the <code>Lazy&lt;T&gt;</code> instance returned</li>
+</ul></li>
+</ul>
+</section>
+<section id="map-and-flatmap-1" class="slide level2">
+<h2><code>map</code> and <code>flatMap</code></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// example</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Producer<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> s <span class="op">=</span> <span class="op">()</span> <span class="op">-&gt;</span> <span class="st">&quot;123456&quot;</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Lazy<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> lazy <span class="op">=</span> Lazy<span class="op">.</span><span class="fu">of</span><span class="op">(</span>s<span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">Transformer</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">String</span><span class="op">&gt;</span> substr <span class="op">=</span> str <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;substring&quot;</span><span class="op">);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> str<span class="op">.</span><span class="fu">substring</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>Lazy<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> lazySubString <span class="op">=</span> lazy<span class="op">.</span><span class="fu">map</span><span class="op">(</span>substr<span class="op">)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>lazySubString<span class="op">);</span> <span class="co">// prints &quot;?&quot;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>lazy<span class="op">.</span><span class="fu">get</span><span class="op">();</span>                        <span class="co">// prints &quot;substring&quot;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>lazySubString<span class="op">);</span> <span class="co">// prints &quot;1&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>lazy<span class="op">.</span><span class="fu">get</span><span class="op">();</span>                        <span class="co">// nothing is printed this time!</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                                   <span class="co">// (since the substr function</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                                   <span class="co">//  is no longer called!)</span></span></code></pre></div>
+</section>
+<section id="filter" class="slide level2">
+<h2><code>filter</code></h2>
+<ul>
+<li>returns a <code>Lazy&lt;Boolean&gt;</code> instance</li>
+<li>note: <code>filter</code> is also <em>lazy</em></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// example</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Lazy<span class="op">&lt;</span><span class="bu">Integer</span><span class="op">&gt;</span> fifty <span class="op">=</span> Lazy<span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="dv">50</span><span class="op">)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Lazy<span class="op">&lt;</span><span class="bu">Boolean</span><span class="op">&gt;</span> even <span class="op">=</span> fifty<span class="op">.</span><span class="fu">filter</span><span class="op">(</span>i <span class="op">-&gt;</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>even<span class="op">)</span> <span class="co">// prints &quot;?&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>even<span class="op">.</span><span class="fu">get</span><span class="op">()</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>even<span class="op">)</span> <span class="co">// prints &quot;true&quot;</span></span></code></pre></div>
+</section></section>
+<section>
+<section id="interlude-combiner" class="title-slide slide level1">
+<h1>Interlude: Combiner</h1>
+
+</section>
+<section id="combiners-t-r" class="slide level2">
+<h2><code>Combiner&lt;S, T, R&gt;</code></h2>
+<ul>
+<li>is an <code>interface</code> that is already provided to you</li>
+<li>contains a single method called <code>combine</code>, which
+<ul>
+<li>basically takes in <strong>two</strong> values
+<ul>
+<li>the first is of type <code>S</code></li>
+<li>the other is of type <code>T</code></li>
+</ul></li>
+<li>returns <strong>one</strong> value
+<ul>
+<li>of type <code>R</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="back-to-our-lazyt-class" class="title-slide slide level1">
+<h1>back to our <code>Lazy&lt;T&gt;</code> class</h1>
+
+</section>
+<section id="combine" class="slide level2">
+<h2><code>combine</code></h2>
+<ul>
+<li>takes in 2 things
+<ul>
+<li>another <code>Lazy</code> instance</li>
+<li>an instance of <code>Combiner</code></li>
+</ul></li>
+<li>basically, calls the <code>combine()</code> method of the <code>Combiner</code>, which
+<ul>
+<li>combines the value in this <code>Lazy</code> instance with the other <code>Lazy</code> instance and</li>
+<li>returns an instance of <code>Lazy</code> that containing this combined value</li>
+</ul></li>
+</ul>
+</section>
+<section id="combine-continued." class="slide level2">
+<h2><code>combine</code> (continued.)</h2>
+<ul>
+<li>note that this method is <em>lazy</em>
+<ul>
+<li>meaning that this combining is <em>not actually done</em> until <code>get()</code> is called on the <code>Lazy</code> instance that is returned by this function!</li>
+<li>same idea as <code>map</code>/<code>flatMap</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="equals" class="slide level2">
+<h2><code>equals</code></h2>
+<ul>
+<li>basically the same as normal <code>equals</code> methods you’ve seen before
+<ul>
+<li>is an <code>EAGER</code> method ❗️ (not lazy like the other methods)</li>
+<li>returns you a <code>boolean</code></li>
+</ul></li>
+<li>has the same effect as <code>get()</code> when called:
+<ul>
+<li>triggers the computation of the value (if <code>get</code> has not been called yet)</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="lazylistt" class="title-slide slide level1">
+<h1><code>LazyList&lt;T&gt;</code></h1>
+
+</section>
+<section id="what-to-do" class="slide level2">
+<h2>what to do</h2>
+<ul>
+<li>the main problem with <code>EagerList&lt;T&gt;</code> is that at instantiation, it calls <code>transform</code> on <em>everything</em>
+<ul>
+<li>can we use our <code>Lazy&lt;T&gt;</code> class, and the <code>map</code> function inside it to <em>defer</em> this?</li>
+</ul></li>
+</ul>
+</section>
+<section id="hint" class="slide level2">
+<h2>hint</h2>
+<blockquote>
+<p>Hint: you only need to make minimal changes!</p>
+</blockquote>
+</section></section>
+<section id="good-luck" class="title-slide slide level1">
+<h1>Good luck! 😃</h1>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
