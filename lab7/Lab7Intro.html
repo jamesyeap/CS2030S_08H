@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS2030S">
+  <title>Lab 7 ♾</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Lab 7 ♾</h1>
+  <p class="author">CS2030S</p>
+  <p class="date">TBD March 2022</p>
+</section>
+
+<section id="javadocs" class="slide level2">
+<h2>JavaDocs</h2>
+<ul>
+<li>For <code>InfiniteList.java</code>, write JavaDocs for all the methods
+<ul>
+<li><a href="https://nus-cs2030s.github.io/2021-s2/javadoc.html">guide to JavaDocs</a></li>
+</ul></li>
+<li>For everything else, JavaDocs is optional but encouraged.</li>
+</ul>
+</section>
+<section id="infinite-list" class="title-slide slide level1">
+<h1>Infinite List ♾</h1>
+
+</section>
+
+<section>
+<section id="level-1---setting-up-preliminaries" class="title-slide slide level1">
+<h1>Level 1 - setting up preliminaries</h1>
+
+</section>
+<section id="fields" class="slide level2">
+<h2>2 fields</h2>
+<ul>
+<li><code>InfiniteList</code> has only 2 <em>instance</em> fields,
+<ul>
+<li><code>Lazy&lt;Maybe&lt;T&gt;&gt;</code> head</li>
+<li><code>Lazy&lt;InfiniteList&lt;T&gt;&gt;</code> value</li>
+</ul></li>
+</ul>
+</section>
+<section id="factory-methods" class="slide level2">
+<h2>3 factory methods</h2>
+<ul>
+<li><code>generate()</code>
+<ul>
+<li>takes in a <code>Producer&lt;T&gt;</code></li>
+</ul></li>
+<li><code>iterate()</code>
+<ul>
+<li>takes in a <code>T seed</code> and <code>Transformer&lt;T,T&gt;</code></li>
+</ul></li>
+<li><code>empty()</code>
+<ul>
+<li>returns an <em>empty</em> <code>InfiniteList</code>
+<ul>
+<li>hint: may want to create a nested subclass of <code>InfiniteList</code> that represents an empty <code>InfiniteList</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="whats-the-difference" class="slide level2">
+<h2>whats the difference?*</h2>
+<ul>
+<li><code>generate()</code> returns a list that produces the next value that
+<ul>
+<li>is <strong><em>independent</em></strong> of the previous one!</li>
+</ul></li>
+<li><code>iterate()</code> returns a list that produces the next value that
+<ul>
+<li>is <strong><em>dependent</em></strong> on the previous one!</li>
+</ul></li>
+</ul>
+</section>
+<section id="level-2---deja-vu" class="slide level2">
+<h2>Level 2 - deja vu</h2>
+<ul>
+<li><code>map()</code>
+<ul>
+<li>takes in a <code>Transformer&lt;? super T, ? extends U&gt;</code></li>
+<li>does what it says: converts each element in the <code>InfiniteList</code>
+<ul>
+<li>as specified in the <code>transform</code> method of the <code>Transformer</code> that is passed in</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="level-3---deja-vu" class="slide level2">
+<h2>Level 3 - deja vu</h2>
+<ul>
+<li><code>filter()</code>
+<ul>
+<li>takes in a <code>BooleanCondition&lt;? super T&gt;</code></li>
+<li>values in the <code>InfiniteList</code> that don’t pass the test will be eliminated
+<ul>
+<li>but will still remain inside the list!</li>
+<li><em>sounds familar?</em> - an instance of <code>None</code>?</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="level-4---new-stuff" class="slide level2">
+<h2>Level 4 - new stuff</h2>
+<ul>
+<li><code>isEmpty()</code>
+<ul>
+<li>checks if this is an instance of <code>EmptyList</code></li>
+</ul></li>
+<li><code>limit()</code>
+<ul>
+<li>takes in a <code>long</code> value <code>n</code>, and cuts down the length of <code>InfiniteList</code> from infinite to size <code>n</code></li>
+</ul></li>
+<li><code>toList()</code>
+<ul>
+<li>is a <em>terminal</em> method that converts the <code>InfiniteList&lt;T&gt;</code> to a <code>List&lt;T&gt;</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="level-5---new-stuff" class="slide level2">
+<h2>Level 5 - new stuff</h2>
+<ul>
+<li><code>takeWhile()</code>
+<ul>
+<li>takes in a <code>BooleanCondition&lt;? super T&gt; cond</code></li>
+<li>if <code>bc.test()</code> on the current element is <code>false</code>, <em>terminate</em> the <code>InfiniteList</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="level-6---terminal-operations" class="slide level2">
+<h2>Level 6 - terminal operations</h2>
+<ul>
+<li><code>count()</code>
+<ul>
+<li>counts the number of elements in the <code>InfiniteList</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="level-6---terminal-operations-1" class="slide level2">
+<h2>Level 6 - terminal operations</h2>
+<ul>
+<li><code>reduce()</code>
+<ul>
+<li>takes in a <code>U seed</code> and <code>Combiner&lt;? super U, ? super T, ? extends U&gt;</code></li>
+<li>takes the first element of the <code>InfiniteList</code>; call it <code>elem</code>, then
+<ul>
+<li>runs <code>combine(seed, elem)</code>, which returns a value <code>combinedElem</code></li>
+<li>then, runs <code>combine(combinedElem, nextElem)</code>
+<ul>
+<li>where <code>nextElem</code> is the subsequent element in the <code>InfiniteList</code></li>
+</ul></li>
+<li>this continues on until the <em>end</em> of the <code>InfiniteList</code> has been reached</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="some-tips" class="slide level2">
+<h2>Some tips</h2>
+<ul>
+<li>use recursion</li>
+<li>make use of the given abstractions in <code>Maybe</code> or <code>Lazy</code> classes!</li>
+<li>start early</li>
+</ul>
+</section>
+<section id="todos-for-infinitelist" class="slide level2">
+<h2>Todos for <code>InfiniteList</code></h2>
+<ul>
+<li>2 fields
+<ul>
+<li><code>Lazy&lt;Maybe&lt;T&gt;&gt; head</code></li>
+<li><code>Lazy&lt;InfiniteList&lt;T&gt;&gt; value</code></li>
+</ul></li>
+<li>3 ways to create an infinite list
+<ul>
+<li><code>generate()</code></li>
+<li><code>iterate()</code></li>
+<li><code>empty()</code></li>
+</ul></li>
+<li><code>map()</code></li>
+<li><code>filter()</code></li>
+<li><code>isEmpty()</code></li>
+<li><code>empty()</code></li>
+<li><code>limit()</code></li>
+</ul>
+</section>
+<section id="todos-for-infinitelist-1" class="slide level2">
+<h2>Todos for <code>InfiniteList</code></h2>
+<ul>
+<li><code>toList()</code></li>
+<li><code>takeWhile()</code></li>
+<li><code>count()</code></li>
+<li><code>reduce()</code></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
