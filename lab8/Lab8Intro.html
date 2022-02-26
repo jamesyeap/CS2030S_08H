@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS2030S">
+  <title>Lab 8 🚌</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Lab 8 🚌</h1>
+  <p class="author">CS2030S</p>
+  <p class="date">TBD March 2022</p>
+</section>
+
+<section>
+<section id="last-lab" class="title-slide slide level1">
+<h1>Last Lab! 😃</h1>
+
+</section>
+<section id="your-todos" class="slide level2">
+<h2>Your Todos</h2>
+<ul>
+<li>Replace the <strong>synchronous</strong> methods with their <strong>asynchronous</strong> versions!
+<ul>
+<li><code>BusAPI::getBusStopsServedBy</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;String&gt;</code></li>
+</ul></li>
+<li><code>BusAPI::getBusServicesAt</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;String&gt;</code></li>
+</ul></li>
+<li><code>BusStop::getBusServices</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;Set&lt;BusService&gt;&gt;</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="your-todos-1" class="slide level2">
+<h2>Your Todos</h2>
+<ul>
+<li>Replace the <strong>synchronous</strong> methods with their <strong>asynchronous</strong> versions!
+<ul>
+<li><code>BusService::getBusStops</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;Set&lt;BusStop&gt;&gt;</code></li>
+</ul></li>
+<li><code>BusService::findStopsWith</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;Set&lt;BusStop&gt;&gt;</code></li>
+</ul></li>
+<li><code>BusRoutes</code>
+<ul>
+<li>now stores a <code>CompletableFuture&lt;Set&lt;BusStop&gt;&gt;</code> instead.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="your-todos-2" class="slide level2">
+<h2>Your Todos</h2>
+<ul>
+<li>Replace the <strong>synchronous</strong> methods with their <strong>asynchronous</strong> versions!
+<ul>
+<li><code>BusRoutes::description</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;String&gt;</code> (hint: use <code>thenCombine</code>)</li>
+</ul></li>
+<li><code>BusSg::findBusServicesBetween</code>
+<ul>
+<li>now returns a <code>CompletableFuture&lt;BusRoutes&gt;</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="relevant-javadocs" class="slide level2">
+<h2>Relevant JavaDocs</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/CompletionStage.html">CompletionStage</a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/CompletableFuture.html">CompletableFuture</a></li>
+</ul>
+</section></section>
+<section id="good-luck" class="title-slide slide level1">
+<h1>Good luck!</h1>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
