@@ -6,25 +6,25 @@ class Box<T> { }
 //   static <T> void foo(Box<List<T>> box) {  }
 // }
 
-// A.<Animal>foo(new Box<List<Animal>>());			// ✅
-// A.<Animal>foo(new Box<List<Dog>>()); 			// ❌
-// A.<Animal>foo(new Box<ArrayList<Animal>>());		// ❌
-// A.<Animal>foo(new Box<ArrayList<Dog>>());		// ❌
+A.<Animal>foo(new Box<List<Animal>>());			 
+A.<Animal>foo(new Box<List<Dog>>()); 			 
+A.<Animal>foo(new Box<ArrayList<Animal>>());		 
+A.<Animal>foo(new Box<ArrayList<Dog>>());		
 
 // class A {
 //   static <T> void foo(Box<? extends List<T>> box) { }
 // }
 
-// A.<Animal>foo(new Box<List<Animal>>());			// ✅
-// A.<Animal>foo(new Box<List<Dog>>()); 			// ❌
-// A.<Animal>foo(new Box<ArrayList<Animal>>());		// ✅
-// A.<Animal>foo(new Box<ArrayList<Dog>>());		// ❌
+// A.<Animal>foo(new Box<List<Animal>>());			// 
+// A.<Animal>foo(new Box<List<Dog>>()); 			// 
+// A.<Animal>foo(new Box<ArrayList<Animal>>());		// 
+// A.<Animal>foo(new Box<ArrayList<Dog>>());		//
 
 // class A {
 //   static <T> void foo(Box<? extends List<? extends T>> box) { }
 // }
 
-// A.<Animal>foo(new Box<List<Animal>>());			// ✅
-// A.<Animal>foo(new Box<List<Dog>>()); 			// ✅
-// A.<Animal>foo(new Box<ArrayList<Animal>>());		// ✅
-// A.<Animal>foo(new Box<ArrayList<Dog>>());		// ✅
+// A.<Animal>foo(new Box<List<Animal>>());			// 
+// A.<Animal>foo(new Box<List<Dog>>()); 			// 
+// A.<Animal>foo(new Box<ArrayList<Animal>>());		// 
+// A.<Animal>foo(new Box<ArrayList<Dog>>());		// 

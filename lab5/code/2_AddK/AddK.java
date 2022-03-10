@@ -32,3 +32,5 @@ Box.of(4).map(new Transformer<Integer, Integer> () {
     return t + 3;
   }
 });
+
+// Box.of(4).map(new AddK(3));
