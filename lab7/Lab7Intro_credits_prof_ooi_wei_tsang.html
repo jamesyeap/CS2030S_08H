@@ -18,6 +18,7 @@ class: middle, center
 
 ### 24 March 2022
 ---
+class: middle,center
 
 ### Highlights of `Lazy<T>` 
 
@@ -85,8 +86,12 @@ class: middle,wide
 ---
 class: middle,wide
 
-Key to be lazy is not to call `get()` directly anywhere.  Calls to get() must be delayed using a producer.
+Keys to being lazy:
+- do not call `get()` directly anywhere; instead, delay `get()` using a producer.
+- do not call `produce()` directly (except in `get()`), call `get()` to use cached value if available.
 
+---
+class: middle,wide
 
 .tiny[
 ```Java
@@ -272,8 +277,8 @@ Recall the issues:
 ---
 class: middle,wide
 
-- `Lazy<T>` that can handle memoization of producer.
-- `Maybe<T>` that can distinguish between `Some(null)` and `None`.
+- `Lazy<T>` can handle memoization of producer.
+- `Maybe<T>` can distinguish between `Some(null)` and `None`.
 
 ---
 class: middle
@@ -500,9 +505,9 @@ $.. ==> 10
 class: bottom
 
 .tiny[
-Version: v1.0
+Version: v1.1
 
-Last Updated: Tue Mar 22 12:09:48 +08 2022
+Last Updated: Wed Mar 23 19:19:45 +08 2022
 ]
 </textarea>
 
